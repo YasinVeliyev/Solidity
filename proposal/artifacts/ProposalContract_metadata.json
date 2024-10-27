@@ -4,7 +4,31 @@
 	},
 	"language": "Solidity",
 	"output": {
-		"abi": [],
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_title",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_description",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_total_vote_to_end",
+						"type": "uint256"
+					}
+				],
+				"name": "create",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
 		"devdoc": {
 			"kind": "dev",
 			"methods": {},
@@ -33,11 +57,11 @@
 	},
 	"sources": {
 		"proposal/ProposalContract.sol": {
-			"keccak256": "0x9b2a714d14c5d4a05351e93dd436362ca78c281313340511fe979349af17abf7",
+			"keccak256": "0xafd3df47a6ff7adb192f4ae528676761d83bd61b41a47eec4aaee307c746db60",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://3a342942468836d4132bf30b55054000313c095dfa65ea3eac681c870c9fb752",
-				"dweb:/ipfs/QmVuyUBuFMCJAvJtrMRXcynuNXSVJdvmujZbrAJcZCaoRX"
+				"bzz-raw://76371949c9679dae1a14d0c959dc7e53da2b1c3d7407be5ba6f4c13eb665423d",
+				"dweb:/ipfs/QmWBg3xCPaW4LDcn2DwaizjLDFKGUmHadkNQ2A9SWRLH8a"
 			]
 		}
 	},

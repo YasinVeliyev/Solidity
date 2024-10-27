@@ -1,9 +1,9 @@
-
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
 contract ProposalContract {
     address owner;
+    uint256 private counter;
     struct Proposal {
         string title;
         string description;
@@ -17,4 +17,21 @@ contract ProposalContract {
 
     mapping(uint256 => Proposal) proposal_history;
 
+    function create(
+        string memory _title,
+        string calldata _description,
+        uint256 _total_vote_to_end
+    ) external {
+        counter += 1;
+        proposal_history[counter] = Proposal(
+            _title,
+            _description,
+            0,
+            0,
+            0,
+            _total_vote_to_end,
+            false,
+            true
+        );
+    }
 }
