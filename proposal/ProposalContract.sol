@@ -22,7 +22,7 @@ contract ProposalContract {
         _;
     }
 
-    modifier isActive() {
+    modifier onlyActive() {
         require(
             proposal_history[counter].is_active,
             "The proposal is not active"
@@ -61,7 +61,7 @@ contract ProposalContract {
         owner = new_owner;
     }
 
-    function vote(uint8 choice) external isActive {
+    function vote(uint8 choice) external onlyActive {
         Proposal storage proposal = proposal_history[counter];
         uint256 total_vote = proposal.reject + proposal.approve + proposal.pass;
         if (choice == 1) {
@@ -84,7 +84,7 @@ contract ProposalContract {
         }
     }
 
-    function isVoted(address _address) view private returns (bool) {
+    function isVoted(address _address) private view returns (bool) {
         for (uint256 v = 0; v < voted_addresses.length; v++) {
             if (_address == voted_addresses[v]) {
                 return true;
@@ -93,7 +93,7 @@ contract ProposalContract {
         return false;
     }
 
-    function calculateCurrentState() view private returns (bool) {
+    function calculateCurrentState() private view returns (bool) {
         Proposal storage proposal = proposal_history[counter];
 
         uint256 approve = proposal.approve;
@@ -111,5 +111,21 @@ contract ProposalContract {
         } else {
             return false;
         }
+    }
+
+    function terminateProposal() external onlyOwner onlyActive {
+        proposal_history[counter].is_active = false;
+    }
+
+    function getCurrentProposal() external view returns (Proposal memory) {
+        return proposal_history[counter];
+    }
+
+    function getProposal(uint256 number)
+        external
+        view
+        returns (Proposal memory)
+    {
+        return proposal_history[number];
     }
 }
